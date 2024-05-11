@@ -1,0 +1,46 @@
+[versions]
+agp = "8.3.1"
+kotlin = "1.9.22"
+coreKtx = "1.13.1"
+appcompat = "1.6.1"
+material = "1.12.0"
+activity = "1.9.0"
+constraintlayout = "2.1.4"
+ksp = "1.9.22-1.0.17"
+dagger = "2.48.1"
+retrofit = "2.11.0"
+cicerone = "7.1"
+elmslie = "3.0.0-alpha10"
+retrofit-serialization = "1.0.0"
+kotlinx-serialization-json = "1.6.3"
+coil = "2.6.0"
+
+[libraries]
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
+androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+
+cicerone = { group = "com.github.terrakok", name = "cicerone", version.ref = "cicerone" }
+
+dagger-core = { group = "com.google.dagger", name = "dagger", version.ref = "dagger" }
+dagger-compiler = { group = "com.google.dagger", name = "dagger-compiler", version.ref = "dagger" }
+
+retorfit-core = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinx-serialization-json" }
+retorfit-converter = { group = "com.jakewharton.retrofit", name = "retrofit2-kotlinx-serialization-converter", version.ref = "retrofit-serialization" }
+coil = { group = "io.coil-kt", name = "coil", version.ref = "coil" }
+
+elmslie-android = { module = "com.github.vivid-money.elmslie:elmslie-android", version.ref = "elmslie" }
+elmslie-core = { module = "com.github.vivid-money.elmslie:elmslie-core", version.ref = "elmslie" }
+
+[plugins]
+androidApplication = { id = "com.android.application", version.ref = "agp" }
+jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+kotlinxSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+
+[bundles]
+retrofit = ["retorfit-core", "retorfit-converter"]
+elmslie = ["elmslie-android", "elmslie-core"]
