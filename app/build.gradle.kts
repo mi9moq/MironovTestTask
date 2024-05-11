@@ -55,4 +55,6 @@ dependencies {
     ksp(libs.dagger.compiler)
 
     implementation(libs.cicerone)
+
+    implementation(libs.shimmer)
 }

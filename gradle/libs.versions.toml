@@ -14,6 +14,7 @@ elmslie = "3.0.0-alpha10"
 retrofit-serialization = "1.0.0"
 kotlinx-serialization-json = "1.6.3"
 coil = "2.6.0"
+shimmer = "0.5.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -34,6 +35,8 @@ coil = { group = "io.coil-kt", name = "coil", version.ref = "coil" }
 
 elmslie-android = { module = "com.github.vivid-money.elmslie:elmslie-android", version.ref = "elmslie" }
 elmslie-core = { module = "com.github.vivid-money.elmslie:elmslie-core", version.ref = "elmslie" }
+
+shimmer = { group = "com.facebook.shimmer", name = "shimmer", version.ref = "shimmer" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
