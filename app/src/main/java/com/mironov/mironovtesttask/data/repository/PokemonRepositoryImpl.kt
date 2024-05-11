@@ -4,6 +4,7 @@ import com.mironov.mironovtesttask.data.mapper.toEntity
 import com.mironov.mironovtesttask.data.network.api.PokemonApi
 import com.mironov.mironovtesttask.data.utils.runCatchingNonCancellation
 import com.mironov.mironovtesttask.di.app.annotation.IoDispatcher
+import com.mironov.mironovtesttask.domain.entity.PokemonDetail
 import com.mironov.mironovtesttask.domain.entity.PokemonItem
 import com.mironov.mironovtesttask.domain.entity.Result
 import com.mironov.mironovtesttask.domain.repository.PokemonRepository
@@ -22,5 +23,9 @@ class PokemonRepositoryImpl @Inject constructor(
 
             Result.Success(pokemonList)
         }
+    }
+
+    override suspend fun getByName(name: String): Result<PokemonDetail> {
+        TODO("Not yet implemented")
     }
 }
