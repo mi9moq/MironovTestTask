@@ -25,7 +25,11 @@ class PokemonRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun getByName(name: String): Result<PokemonDetail> {
-        TODO("Not yet implemented")
+    override suspend fun getByName(name: String): Result<PokemonDetail> = withContext(dispatcher) {
+        runCatchingNonCancellation {
+            val pokemon = api.getByName(name).toEntity()
+
+            Result.Success(pokemon)
+        }
     }
 }
