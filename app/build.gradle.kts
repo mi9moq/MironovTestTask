@@ -35,6 +35,10 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -55,4 +59,6 @@ dependencies {
     ksp(libs.dagger.compiler)
 
     implementation(libs.cicerone)
+
+    implementation(libs.shimmer)
 }
