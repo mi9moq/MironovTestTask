@@ -14,4 +14,4 @@
 - elmslie
 - shimmer
 
-[*Видео работы приложения*] (https://github.com/mi9moq/MironovTestTask/blob/master/app/src/main/res/raw/test_task.webm)
+[*Видео работы приложения*](https://github.com/mi9moq/MironovTestTask/blob/master/app/src/main/res/raw/test_task.webm)
