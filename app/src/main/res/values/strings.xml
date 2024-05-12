@@ -2,4 +2,6 @@
     <string name="app_name">MironovTestTask</string>
     <string name="height">Height: %s</string>
     <string name="weight">Weight: %s</string>
+    <string name="try_again">try again</string>
+    <string name="loading_error">Loading Error</string>
 </resources>

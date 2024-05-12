@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import com.mironov.mironovtesttask.databinding.FragmentPokemonBinding
 import com.mironov.mironovtesttask.domain.entity.PokemonItem
 import com.mironov.mironovtesttask.presentation.pokemon_list.PokemonsCommand
@@ -62,7 +63,18 @@ class PokemonsFragment : ElmBaseFragment<PokemonsEffect, PokemonsState, Pokemons
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
+        setupClickListeners()
         store.accept(PokemonsEvent.Ui.Init)
+    }
+
+    private fun setupRecyclerView() {
+        binding.content.adapter = adapter
+    }
+
+    private fun setupClickListeners() {
+        binding.tryAgain.setOnClickListener {
+            store.accept(PokemonsEvent.Ui.Refresh)
+        }
     }
 
     override fun render(state: PokemonsState) {
@@ -74,17 +86,27 @@ class PokemonsFragment : ElmBaseFragment<PokemonsEffect, PokemonsState, Pokemons
         }
     }
 
-    private fun setupRecyclerView() {
-        binding.content.adapter = adapter
+    override fun handleEffect(effect: PokemonsEffect): Unit = when (effect) {
+        PokemonsEffect.Error -> applyErrorState()
     }
 
     private fun applyContentState(items: List<PokemonItem>) {
         binding.shimmer.hide()
+        binding.tryAgain.isVisible = false
+        binding.errorMessage.isVisible = false
         adapter.submitList(items)
     }
 
     private fun applyLoadingState() {
         binding.shimmer.show()
+        binding.tryAgain.isVisible = false
+        binding.errorMessage.isVisible = false
+    }
+
+    private fun applyErrorState() {
+        binding.shimmer.hide()
+        binding.tryAgain.isVisible = true
+        binding.errorMessage.isVisible = true
     }
 
     private fun openPokemon(name: String) {
