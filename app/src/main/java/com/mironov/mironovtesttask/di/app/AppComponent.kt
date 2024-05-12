@@ -1,9 +1,10 @@
 package com.mironov.mironovtesttask.di.app
 
-import com.mironov.mironovtesttask.MainActivity
+import com.mironov.mironovtesttask.ui.MainActivity
 import com.mironov.mironovtesttask.PokemonApp
 import com.mironov.mironovtesttask.di.app.annotation.AppScope
 import com.mironov.mironovtesttask.di.app.module.DispatcherModule
+import com.mironov.mironovtesttask.di.app.module.NavigationModule
 import com.mironov.mironovtesttask.di.app.module.NetworkModule
 import com.mironov.mironovtesttask.di.app.module.RepositoryModule
 import com.mironov.mironovtesttask.di.detail.DetailComponent
@@ -16,6 +17,7 @@ import dagger.Component
         NetworkModule::class,
         DispatcherModule::class,
         RepositoryModule::class,
+        NavigationModule::class,
     ]
 )
 interface AppComponent {

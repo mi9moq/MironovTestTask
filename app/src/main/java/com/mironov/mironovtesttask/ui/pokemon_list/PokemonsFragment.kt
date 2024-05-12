@@ -40,7 +40,9 @@ class PokemonsFragment : ElmBaseFragment<PokemonsEffect, PokemonsState, Pokemons
     }
 
     private val adapter by lazy {
-        PokemonAdapter()
+        PokemonAdapter(
+            ::openPokemon
+        )
     }
 
     override fun onAttach(context: Context) {
@@ -83,6 +85,10 @@ class PokemonsFragment : ElmBaseFragment<PokemonsEffect, PokemonsState, Pokemons
 
     private fun applyLoadingState() {
         binding.shimmer.show()
+    }
+
+    private fun openPokemon(name: String) {
+        store.accept(PokemonsEvent.Ui.OnItemClicked(name))
     }
 
     override fun onDestroy() {

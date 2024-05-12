@@ -88,7 +88,7 @@ class DetailFragment : ElmBaseFragment<DetailEffect, DetailState, DetailEvent>()
     private fun initToolbar() {
         binding.toolbar.title = pokemonName
         binding.toolbar.setNavigationOnClickListener {
-            //TODO добавить навигацию
+            store.accept(DetailEvent.Ui.OnBackClicked)
         }
     }
 

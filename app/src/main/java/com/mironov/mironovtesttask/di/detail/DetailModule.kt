@@ -1,5 +1,7 @@
 package com.mironov.mironovtesttask.di.detail
 
+import com.mironov.mironovtesttask.navigation.router.DetailsRouter
+import com.mironov.mironovtesttask.navigation.router.DetailsRouterImpl
 import com.mironov.mironovtesttask.presentation.detail.DetailActor
 import com.mironov.mironovtesttask.presentation.detail.DetailCommand
 import com.mironov.mironovtesttask.presentation.detail.DetailEffect
@@ -28,4 +30,8 @@ class DetailModule {
         reducer = reducer,
         actor = actor
     )
+
+    @DetailsScope
+    @Provides
+    fun provideDetailRouter(impl: DetailsRouterImpl): DetailsRouter = impl
 }

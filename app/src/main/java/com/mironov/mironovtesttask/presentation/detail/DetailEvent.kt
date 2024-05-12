@@ -9,6 +9,8 @@ sealed interface DetailEvent {
         data class Init(val name: String) : Ui()
 
         data class Refresh(val name: String) : Ui()
+
+        data object OnBackClicked: Ui()
     }
 
     sealed class Domain : DetailEvent {

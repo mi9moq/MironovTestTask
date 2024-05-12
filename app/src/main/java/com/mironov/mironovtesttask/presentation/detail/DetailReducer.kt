@@ -1,10 +1,11 @@
 package com.mironov.mironovtesttask.presentation.detail
 
+import com.mironov.mironovtesttask.navigation.router.DetailsRouter
 import vivid.money.elmslie.core.store.dsl.ScreenDslReducer
 import javax.inject.Inject
 
 class DetailReducer @Inject constructor(
-
+    private val router: DetailsRouter
 ) : ScreenDslReducer<DetailEvent,
         DetailEvent.Ui,
         DetailEvent.Domain,
@@ -50,5 +51,7 @@ class DetailReducer @Inject constructor(
                 +DetailCommand.Load(event.name)
             }
         }
+
+        DetailEvent.Ui.OnBackClicked -> router.back()
     }
 }
