@@ -1,10 +1,11 @@
 package com.mironov.mironovtesttask.presentation.pokemon_list
 
+import com.mironov.mironovtesttask.navigation.router.PokemonsRouter
 import vivid.money.elmslie.core.store.dsl.ScreenDslReducer
 import javax.inject.Inject
 
 class PokemonsReducer @Inject constructor(
-
+    private val router: PokemonsRouter
 ) : ScreenDslReducer<PokemonsEvent,
         PokemonsEvent.Ui,
         PokemonsEvent.Domain,
@@ -50,5 +51,7 @@ class PokemonsReducer @Inject constructor(
                 +PokemonsCommand.Load
             }
         }
+
+        is PokemonsEvent.Ui.OnItemClicked -> router.openDetail(event.name)
     }
 }

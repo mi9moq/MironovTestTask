@@ -9,7 +9,8 @@ import com.mironov.mironovtesttask.databinding.PokemonItemBinding
 import com.mironov.mironovtesttask.domain.entity.PokemonItem
 
 class PokemonViewHolder(
-    parent: ViewGroup
+    parent: ViewGroup,
+    private val onItemClick: (String) -> Unit
 ): RecyclerView.ViewHolder(
     LayoutInflater.from(parent.context).inflate(R.layout.pokemon_item, parent, false)
 ) {
@@ -20,6 +21,9 @@ class PokemonViewHolder(
         with(binding) {
             name.text = pokemon.name
             icon.load(pokemon.iconUrl)
+        }
+        itemView.setOnClickListener {
+            onItemClick(pokemon.name)
         }
     }
 }

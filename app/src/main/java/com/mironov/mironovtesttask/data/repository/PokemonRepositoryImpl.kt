@@ -4,6 +4,7 @@ import com.mironov.mironovtesttask.data.mapper.toEntity
 import com.mironov.mironovtesttask.data.network.api.PokemonApi
 import com.mironov.mironovtesttask.data.utils.runCatchingNonCancellation
 import com.mironov.mironovtesttask.di.app.annotation.IoDispatcher
+import com.mironov.mironovtesttask.domain.entity.PokemonDetail
 import com.mironov.mironovtesttask.domain.entity.PokemonItem
 import com.mironov.mironovtesttask.domain.entity.Result
 import com.mironov.mironovtesttask.domain.repository.PokemonRepository
@@ -21,6 +22,14 @@ class PokemonRepositoryImpl @Inject constructor(
             val pokemonList = api.getList().pokemonList.map { it.toEntity() }
 
             Result.Success(pokemonList)
+        }
+    }
+
+    override suspend fun getByName(name: String): Result<PokemonDetail> = withContext(dispatcher) {
+        runCatchingNonCancellation {
+            val pokemon = api.getByName(name).toEntity()
+
+            Result.Success(pokemon)
         }
     }
 }

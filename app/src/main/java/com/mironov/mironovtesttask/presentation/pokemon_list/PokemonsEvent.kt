@@ -9,6 +9,8 @@ sealed interface PokemonsEvent {
         data object Init : Ui()
 
         data object Refresh : Ui()
+
+        data class OnItemClicked(val name: String): Ui()
     }
 
     sealed class Domain : PokemonsEvent {
