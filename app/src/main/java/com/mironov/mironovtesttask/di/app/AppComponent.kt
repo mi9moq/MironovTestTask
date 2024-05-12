@@ -6,6 +6,7 @@ import com.mironov.mironovtesttask.di.app.annotation.AppScope
 import com.mironov.mironovtesttask.di.app.module.DispatcherModule
 import com.mironov.mironovtesttask.di.app.module.NetworkModule
 import com.mironov.mironovtesttask.di.app.module.RepositoryModule
+import com.mironov.mironovtesttask.di.detail.DetailComponent
 import com.mironov.mironovtesttask.di.pokemon_list.PokemonsComponent
 import dagger.Component
 
@@ -24,6 +25,8 @@ interface AppComponent {
     fun inject(activity: MainActivity)
 
     fun getPokemonsComponentFactory(): PokemonsComponent.Factory
+
+    fun getDetailComponentFactory(): DetailComponent.Factory
 
     @Component.Factory
     interface Factory {
