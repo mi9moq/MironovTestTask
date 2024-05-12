@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MironovTestTask</string>
+    <string name="height">Height: %s</string>
+    <string name="weight">Weight: %s</string>
 </resources>
