@@ -77,6 +77,7 @@ class DetailFragment : ElmBaseFragment<DetailEffect, DetailState, DetailEvent>()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initToolbar()
+        setupClickListeners()
         store.accept(DetailEvent.Ui.Init(pokemonName))
     }
 
@@ -92,6 +93,12 @@ class DetailFragment : ElmBaseFragment<DetailEffect, DetailState, DetailEvent>()
         }
     }
 
+    private fun setupClickListeners() {
+        binding.tryAgain.setOnClickListener {
+            store.accept(DetailEvent.Ui.Refresh(pokemonName))
+        }
+    }
+
     override fun render(state: DetailState) {
         if (state.isLoading) applyLoadingState()
 
@@ -100,18 +107,26 @@ class DetailFragment : ElmBaseFragment<DetailEffect, DetailState, DetailEvent>()
         }
     }
 
+    override fun handleEffect(effect: DetailEffect): Unit = when (effect) {
+        DetailEffect.Error -> applyErrorState()
+    }
+
     private fun applyLoadingState() {
         with(binding) {
             shimmer.show()
             weight.isVisible = false
             height.isVisible = false
             icon.isVisible = false
+            tryAgain.isVisible = false
+            errorMessage.isVisible = false
         }
     }
 
     private fun applyLoadingState(content: PokemonDetail) {
         with(binding) {
             shimmer.hide()
+            tryAgain.isVisible = false
+            errorMessage.isVisible = false
             weight.apply {
                 isVisible = true
                 text = String.format(requireContext().getString(R.string.weight), content.weight)
@@ -124,6 +139,17 @@ class DetailFragment : ElmBaseFragment<DetailEffect, DetailState, DetailEvent>()
                 isVisible = true
                 load(content.iconUrl)
             }
+        }
+    }
+
+    private fun applyErrorState() {
+        with(binding) {
+            shimmer.hide()
+            weight.isVisible = false
+            height.isVisible = false
+            icon.isVisible = false
+            tryAgain.isVisible = true
+            errorMessage.isVisible = true
         }
     }
 
